@@ -1,0 +1,269 @@
+<!doctype html><meta charset="utf-8"><title>客服问题解决话术</title>
+<style>body{font:16px/1.75 -apple-system,"PingFang SC",sans-serif;max-width:860px;margin:0 auto;padding:28px 20px;color:#1a1a1a}
+h1{font-size:26px;border-bottom:2px solid #eee;padding-bottom:8px;margin-top:36px}
+h2{font-size:21px;margin-top:30px;color:#0b5}
+h3{font-size:18px;margin-top:22px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px}
+th,td{border:1px solid #ddd;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f6f8fa}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px}
+li{margin:4px 0}a{color:#0a66c2;word-break:break-all}
+blockquote{border-left:3px solid #ccc;margin:8px 0;padding-left:12px;color:#555}
+</style>
+<h1>客服问题解决话术（全量版）</h1>
+<p>数据来源：生产机企业微信本地库真实会话，2026-11-16 ~ 11-26，788 个会话、8246 条文字消息，其中客服应答 3319 条。</p>
+<p>用法：先看第二部分找现象，照&quot;怎么做&quot;执行，直接抄&quot;原话&quot;。</p>
+<h1>第一部分 通用前置（同类只说一句）</h1>
+<table><thead><tr><th>场景</th><th>说什么</th></tr></thead><tbody>
+<tr><td>接住，先别让客户等</td><td>稍等，我帮您看下</td></tr>
+<tr><td>需要定位账号</td><td>麻烦您提供一下注册邮箱，这边后台帮您检查一下呢</td></tr>
+<tr><td>需要定位故障</td><td>麻烦您截图给我看一下具体是什么报错呢</td></tr>
+<tr><td>判断是客户端问题</td><td>请问您用的是哪个软件（Claude Code / Cursor / VSCode / 桌面端）？</td></tr>
+<tr><td>需要直接看屏幕</td><td>您可以下载一个 UU 远程，这边为您远程看下 <a href="https://uuyc.163.com/">https://uuyc.163.com/</a></td></tr>
+<tr><td>私聊客户要转群</td><td>您可以添加一下我的好友，给您拉专属客服群</td></tr>
+<tr><td>已经处理完</td><td>您好已经恢复了，您再试下；有问题随时叫我～</td></tr>
+<tr><td>指路（大部分问题有文档）</td><td>这是配置教程：<a href="https://docs.aicodewith.ai/">https://docs.aicodewith.ai/</a></td></tr>
+</tbody></table>
+<h1>第二部分 具体问题怎么解决</h1>
+<h2>A. Claude Code / 客户端</h2>
+<h3>A1 提示&quot;自动更新失败（claude.exe 正在被占用）&quot;</h3>
+<p>怎么做：不是权限问题，是进程还开着、文件被锁。</p>
+<li>让客户关掉所有 Claude Code 窗口（包括编辑器里挂着的）</li>
+<li>新开终端窗口</li>
+<li>执行 claude update</li>
+<li>更新完重新打开</li>
+<p>原话（11-26）：</p>
+<p>您好，看您截图最下面提示自动更新失败（claude.exe 正在被占用），麻烦您先把电脑上所有开着的 Claude Code 窗口（包括编辑器里挂着的）全部关掉，然后新开一个终端窗口输入 claude update 更新到最新版本，更新完再重新打开试试</p>
+<p>另一种情形（11-16）：软件自动更新但没外网导致闪退。</p>
+<p>原话：大概率是软件可能启动了自动更新，又没有外网所以闪退了。您可以卸载后以全局模式再重装一下软件</p>
+<h3>A2 界面不是中文</h3>
+<p>怎么做：中文界面依赖登录态/网络，需要开 VPN 后重启客户端。</p>
+<p>原话：需要开启 vpn，重启就会加载中文界面</p>
+<p>补充：客户不想折腾时说——使用其实没有区别，让他用中文回复就可以</p>
+<h3>A3 出现 Auto Mode 计费提示，客户不敢继续</h3>
+<p>怎么做：这是 Claude Code 对官方接口的计费提示，走第三方 API 不受影响，直接回车。</p>
+<p>原话（11-26）：您好，这是 Claude Code 官方新版 Auto Mode 的计费兼容提示，主要针对官方接口的 classifier 计费机制。第三方 API 接入不需要这个功能，不影响正常使用，直接回车继续即可</p>
+<h3>A4 报错说被&quot;安全分类器&quot;拦了</h3>
+<p>怎么做：这是 Anthropic 官方加在客户端的实时分类器，会误拦正常对话，不等于客户违规。给官方出处安抚，让客户重发。</p>
+<p>原话（11-24）：您好，这个是 Anthropic 官方在 Claude Code 上加的实时安全分类器拦的。官方自己也写了：能力更强所以 safeguards 更严，有时会误拦正常、非安全类对话；拦到也不等于你违规。</p>
+<p>报错原文会链到 Usage Policy：<a href="https://www.anthropic.com/legal/aup（写明：碰到拦截本身≠违反">https://www.anthropic.com/legal/aup（写明：碰到拦截本身≠违反</a> AUP）</p>
+<p>官方文档 Safeguard refusals：<a href="https://platform.claude.com/docs/en/build-with-claude/safeguard-refusals">https://platform.claude.com/docs/en/build-with-claude/safeguard-refusals</a></p>
+<h3>A5 MCP / 插件装了没生效（Connectors 与 Claude Code 混淆）</h3>
+<p>怎么做：两套配置互不相通，按客户实际使用位置分开处理。</p>
+<table><thead><tr><th>客户在哪用</th><th>怎么配</th></tr></thead><tbody>
+<tr><td>Claude Desktop 普通对话</td><td>Customize → Connectors 里打开扩展（如 blender），并确保软件侧插件服务已启动</td></tr>
+<tr><td>Claude Code（终端/编辑器）</td><td>单独配 MCP：claude mcp add blender -s user -- uvx blender-mcp，或项目根目录建 .mcp.json</td></tr>
+</tbody></table>
+<p>原话（11-25）：您在 Customize -&gt; Connectors 里装的 blender 只是 Claude Desktop 桌面端普通对话用的本地扩展，而截图里提示没找到配置的是 Claude Code。这两边的 MCP 配置是分开的，不会自动互通</p>
+<p>补充（11-25）：把您需要连接的 mcp 链接发给 codex 让他帮您连就可以</p>
+<h3>A6 客户端&quot;后端报错&quot;、连不上</h3>
+<p>怎么做：先排除客户端本身，再判断网络还是服务端；仍不行就远程。</p>
+<p>原话：您好，看了下应该是您客户端的后端报错</p>
+<h2>B. 模型 / 接口</h2>
+<h3>B1 客户担心&quot;用你们的 API 会被 Claude 官方封号&quot;</h3>
+<p>怎么做：明确没有封号风险（不共用客户账号），说明隔离与风控。</p>
+<p>原话（11-25）：使用我们的 API 不存在被 Claude 官方封号风险的</p>
+<p>补充：我们有相互隔离的环境，不同的方案来做风控，测试封号</p>
+<h3>B2 报 429 / 并发不够</h3>
+<p>怎么做：默认并发 10，只有这一处限制；量大走企业定制提高并发。</p>
+<p>原话（11-26）：默认并发是 10，只有这个有限制</p>
+<h3>B3 Anthropic 风控加强导致模型不可用（近期高频）</h3>
+<p>怎么做：先切 GPT 顶上，同时说明技术在处理。</p>
+<p>原话：您好，Anthropic 在 IPO 后加强了风控，技术这边正在检查看如何修复，您可以先切换到 gpt 等其他模型使用</p>
+<h3>B4 Gemini 渠道不稳定</h3>
+<p>怎么做：渠道风控严、货源少，建议多开渠道；波动时先切 Claude。</p>
+<p>原话（11-24）：您好，gemini 现在渠道，因为风控严，加上货源很少，稳定性会差点，可以多打开几个渠道。碰到波动情况可以暂时先切到 claude 模型来使用，能力也是不差的</p>
+<h3>B5 客户说&quot;后台勾选了 GPT-6.2 但看不到&quot;</h3>
+<p>怎么做：默认模型已是 6.2-sol；按客户端的配置路径给指引。</p>
+<p>原话（11-23）：您好，现在默认模型已经是 6.2-sol 了，您试试</p>
+<p>Codex 客户端（11-19）：Codex CLI / Codex App 更新到最新版，在 /model 中选择 gpt-6.2-sol 或 gpt-6.2-astra；其他客户端在模型列表中添加对应模型 ID</p>
+<h2>C. 配置 / 接入</h2>
+<h3>C1 API 地址怎么填</h3>
+<li>OpenAI 兼容（大多数客户端）：<a href="https://api.aicodewith.ai/v1">https://api.aicodewith.ai/v1</a></li>
+<li>只填 base 的地方：<a href="https://api.aicodewith.ai">https://api.aicodewith.ai</a></li>
+<p>常见错误：域名打错，少一个 i（aicodewith）。</p>
+<p>原话（11-26）：openai 通用协议接口地址是 <a href="https://api.aicodewith.ai/v1">https://api.aicodewith.ai/v1</a></p>
+<p>纠错原话（11-25）：<a href="https://api.aicodewith.ai/v1">https://api.aicodewith.ai/v1</a>，少打了一个 i</p>
+<h3>C2 想接入 MCP（生图生视频）</h3>
+<p>原话：您好，可以通过接入我们的 mcp 服务来实现：<a href="https://docs.aicodewith.ai/zh/docs/mcp">https://docs.aicodewith.ai/zh/docs/mcp</a></p>
+<h3>C3 客户要换 key，但不说在哪个软件</h3>
+<p>怎么做：先确认软件，再给对应路径，避免给错。</p>
+<p>原话：您要在哪个软件里换 key 呢</p>
+<h3>C4 老客户换了新网址，不会登录</h3>
+<p>原话：您好，直接用旧帐号登陆就好，我们数据是互通的</p>
+<h2>D. 钱：套餐 / 返现 / 额度</h2>
+<h3>D1 &quot;套餐是不是包月、月底清零？&quot;</h3>
+<p>怎么做：套餐 = 充值档位（储值卡），不限制模型，按量扣，余额不过期。</p>
+<p>原话（11-26）：您理解得没错，其实就是按量收费、用多少花多少。这边页面上写着&quot;套餐&quot;，其实只是提前设置好的不同充值金额档位，相当于充储值卡，并不是包月、月底清零的话费套餐。买 399 或 699，就是往您账户里充对应额度的余额，实际使用按量扣费，没用完的余额会一直留在账户里，不会过期清零</p>
+<h3>D2 消费返现规则</h3>
+<p>原话（11-25）：您好，现在是消费返现，按你的实际消费金额累计：消费满 699 返 4%（27.96），满 1799 返 6%（107.94），这两档都能反复领。领了之后会把这一档的金额从已累计的消费里扣掉，剩下的继续累计，所以不用一次消耗完。返现直接打到赠送余额，可以接着用来消费</p>
+<h3>D3 余额不足</h3>
+<p>原话：您好是的 <a href="https://aicodewith.ai/zh/dashboard/recharge">https://aicodewith.ai/zh/dashboard/recharge</a></p>
+<h3>D4 新客户没额度 / 要体验金</h3>
+<p>怎么做：要注册邮箱，后台发放 6 元体验额度（7 天有效）。</p>
+<p>原话（11-26）：✅ 已为您发放 6 元体验额度，7 天内领取有效，您前往【任务奖励】页面即可领取使用：<a href="https://aicodewith.ai/zh/dashboard/rewards">https://aicodewith.ai/zh/dashboard/rewards</a></p>
+<p>另一种说法（11-25）：您好，提供注册邮箱，可领取 ￥6 体验额度，在&quot;任务奖励&quot;里领取</p>
+<h3>D5 企业定制怎么报</h3>
+<p>原话：1、充值与折扣：起充 1w，以此基础赠送 5% 额度</p>
+<p>2、密钥与并发：支持更多密钥分配，提供更高并发</p>
+<p>3、合作周期：签署年度合作合同</p>
+<p>4、发票服务：发票成本由我方承担</p>
+<p>5、专属服务：建立专属服务小群</p>
+<h2>E. 发票 / 对公</h2>
+<h3>E1 发票催了很久没开</h3>
+<p>怎么做：当前发票在提额、税务审批慢，先安抚给预期（1-2 天），能开时主动通知。</p>
+<p>原话（11-25）：这两天发票提额，税务审批比较慢</p>
+<p>我再催一把，正好在提额的时候开咱这个票，提额也很快其实，也就 1、2 天</p>
+<p>换主体说明：换主体了嘛，换成惠州的了，养养惠州的额度，您也知道国内税务有限额然后就得养养，提额啥的就得走个流程</p>
+<h3>E2 对公转账信息（含开票成本）</h3>
+<p>原话（11-23）：对公转账收款信息：</p>
+<p>账户名称：惠州市零柒科技有限公司</p>
+<p>统一社会信用代码：91441322MAG1F9CK3M</p>
+<p>账户号码：726381027658</p>
+<p>开户银行：中国银行股份有限公司惠州博罗支行</p>
+<p>公司注册地址：博罗县长宁镇祥岗罗2号河心七巷1号楼（现代公寓）1层12铺</p>
+<p>开票成本按 5% 计（例如充值 1000 对公转账 1050，开票按实际支付金额开）</p>
+<p>打完把平台注册邮箱、开票信息和打款回执发出，这边安排充值</p>
+<p>另一主体（11-19）：天津川流文化有限公司，统一社会信用代码 91120104MADUK9R036，账号 12050180560100000316，中国建设银行天津南洋支行</p>
+<h3>E3 客户要样票</h3>
+<p>原话：您好，可以参考下这个样票</p>
+<h2>F. 网络 / VPN</h2>
+<h3>F1 判断是不是网络问题</h3>
+<p>怎么做：先问是否用了梯子/VPN，再排除服务端。</p>
+<p>原话：您好，请问您是否有使用梯子</p>
+<p>那估计是暂时网络波动哈</p>
+<h3>F2 特价渠道偶发静默失败</h3>
+<p>怎么做：让客户回&quot;继续&quot;；频繁失败就关特价，开其他两个渠道。</p>
+<p>原话（11-24）：您好，日常使用基本是没有区别的，有时候会静默失败，发&quot;继续&quot;就可以，您感觉频繁的话，可以先关会特价，开剩下的另外这俩渠道</p>
+<p>渠道设置（11-22）：您好，可以在渠道管理单独只开启特价渠道</p>
+<h3>F3 特价渠道是哪个、几折</h3>
+<p>原话（11-18）：咱们特价渠道主要来源就是 kiro；就是 1.9 折那个</p>
+<p>Gemini 说明（11-24）：gemini 现在渠道，因为风控严，加上货源很少，目前该模型暂时没有 1.9 折</p>
+<h2>G. 账号找回</h2>
+<p>怎么做：让客户把可能的邮箱都给出来，后台查注册记录；查不到就要付款记录。</p>
+<p>原话：您可以把可能的邮箱都给我，我这边后台看下是否有注册记录</p>
+<p>没查到（11-17）：您好没有查到注册记录，您还有之前充值的付款记录吗？</p>
+<h1>第三部分 最近新出现的问题（时效）</h1>
+<table><thead><tr><th>日期</th><th>新情况</th><th>处理方式</th></tr></thead><tbody>
+<tr><td>11-23</td><td>GPT-6.2 Sol 成为默认模型</td><td>客户看不到 → 按客户端加模型 ID/更新版本</td></tr>
+<tr><td>11-24</td><td>Anthropic IPO 后风控加强</td><td>先切 GPT，技术处理中</td></tr>
+<tr><td>11-24~26</td><td>Claude Code 新版 Auto Mode 计费提示</td><td>第三方 API 直接回车继续</td></tr>
+<tr><td>11-23~24</td><td>实时安全分类器误拦</td><td>官方 safeguards，误拦≠违规，重发</td></tr>
+<tr><td>11-25</td><td>特价渠道 1.4 折（Sonnet/Opus/Haiku）</td><td>报价用价格表；静默失败发&quot;继续&quot;</td></tr>
+<tr><td>11-25</td><td>发票提额、税务审批慢</td><td>安抚并给 1-2 天预期</td></tr>
+<tr><td>11-24</td><td>Gemini 渠道风控严、无 1.9 折</td><td>多开渠道 / 暂切 Claude</td></tr>
+</tbody></table>
+<h1>第四部分 一页速查</h1>
+<table><thead><tr><th>客户说</th><th>第一步</th><th>关键动作</th></tr></thead><tbody>
+<tr><td>自动更新失败 / 被占用</td><td>关所有 Claude Code 窗口</td><td>终端 claude update</td></tr>
+<tr><td>不是中文</td><td>问是否开 VPN</td><td>开 VPN 后重启</td></tr>
+<tr><td>弹 Auto Mode</td><td>确认走第三方 API</td><td>直接回车继续</td></tr>
+<tr><td>被安全分类器拦</td><td>给官方出处</td><td>安抚 + 重发</td></tr>
+<tr><td>MCP 没生效</td><td>问在 Desktop 还是 Code</td><td>两边分开配</td></tr>
+<tr><td>429 / 并发</td><td>默认并发 10</td><td>量大走企业定制</td></tr>
+<tr><td>模型不能用</td><td>是否 Anthropic 风控</td><td>先切 GPT</td></tr>
+<tr><td>不知道填什么地址</td><td>—</td><td><a href="https://api.aicodewith.ai/v1">https://api.aicodewith.ai/v1</a></td></tr>
+<tr><td>套餐会不会清零</td><td>—</td><td>充值包，不过期</td></tr>
+<tr><td>要发票</td><td>是否已开</td><td>提额期先给样票，给 1-2 天</td></tr>
+<tr><td>对公怎么转</td><td>—</td><td>惠州主体 + 开票成本 5%</td></tr>
+<tr><td>连不上</td><td>问梯子</td><td>再查服务端</td></tr>
+<tr><td>找不到账号</td><td>要所有可能邮箱</td><td>后台查注册记录</td></tr>
+<tr><td>特价不稳定</td><td>是否频繁</td><td>发&quot;继续&quot;或关特价</td></tr>
+</tbody></table>
+<h1>附录 分类原话（按最近时间，每类取样）</h1>
+<h2>自动更新/被占用</h2>
+<li>[2026-11-26] 您好，看您截图最下面提示自动更新失败（claude.exe 正在被占用），麻烦您先把电脑上所有开着的 Claude Code 窗口（包括编辑器里挂着的）全部关掉，然后新开一个终端窗口输入 claude update 更新到最新版本，更新完再重新打开试试</li>
+<li>[2026-11-16] 大概率是软件可能启动了自动更新，又没有外网所以闪退了。您可以卸载后以全局模式再重装一下软件</li>
+<h2>中文界面</h2>
+<li>[2026-11-25] 正常如果登录chatgpt官方账号的话不开vpn都对话不了，肯定是开着vpn在使用的，所以切换完语言打开就是中文呢</li>
+<li>[2026-11-25] 使用其实没有区别，让他用中文回复就可以</li>
+<li>[2026-11-25] 需要开启vpn，重启就会加载中文界面</li>
+<li>[2026-11-25] 切换中文界面需要vpn的</li>
+<li>[2026-11-25] &quot;AICodeWith｜客服小何： 需要开启梯子重启就会变中文了哈&quot; ------</li>
+<h2>Auto Mode</h2>
+<li>[2026-11-26] 您好，这是 Claude Code 官方新版 Auto Mode 的计费兼容提示，主要针对官方接口的 classifier 计费机制。第三方 API 接入不需要这个功能，不影响正常使用，直接回车继续即可</li>
+<h2>安全分类器</h2>
+<li>[2026-11-26] 您好，这是 Claude Code 官方新版 Auto Mode 的计费兼容提示，主要针对官方接口的 classifier 计费机制。第三方 API 接入不需要这个功能，不影响正常使用，直接回车继续即可</li>
+<li>[2026-11-24] 您好，这个是 Anthropic 官方在 Claude Code／Opus 5.5 上加的实时安全分类器拦的。 官方自己也写了：能力更强所以 safeguards 更严，有时会误拦正常、非安全类对话；拦到也不等于你违规。 官方出处： • 报错原文会链到 Usage Policy：<a href="https://www.anthropic.com/legal/aup">https://www.anthropic.com/legal/aup</a> （写明：碰到拦截本身≠违反 AUP） • 官方文档 Safeguard refusals：<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5</a> • Help Center（承认会有误杀）：<a href="https://support.claude.com/en/articles/8106465">https://support.claude.com/en/articles/8106465</a> • 同款误拦在 Anthropic 自家仓库也有人报，例如：[Bug] Opus 5.5 safeguards falsely flag non-cyber session (API Error) · Issue #108500 · anthropics/cl 建议处理：双击 Esc 改上一句再试，或 /model 先换别的型号</li>
+<li>[2026-11-23] 您好，这个是 Anthropic 官方在 Claude Code上加的实时安全分类器拦的。 官方自己也写了：能力更强所以 safeguards 更严，有时会误拦正常、非安全类对话；拦到也不等于你违规。 官方出处： • 报错原文会链到 Usage Policy：<a href="https://www.anthropic.com/legal/aup">https://www.anthropic.com/legal/aup</a> （写明：碰到拦截本身≠违反 AUP） • 官方文档 Safeguard refusals：<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5</a> • Help Center（承认会有误杀）：<a href="https://support.claude.com/en/articles/8106465">https://support.claude.com/en/articles/8106465</a> • 同款误拦在 Anthropic 自家仓库也有人报，例如：[Bug] Opus 5.5 safeguards falsely flag non-cyber session (API Error) · Issue #108500 · anthropics/cl 建议处理：双击 Esc 改上一句再试，或 /model 先换别的型号</li>
+<li>[2026-11-23] 您好，这个是 Anthropic 官方加的实时安全分类器拦的。 官方自己也写了：能力更强所以 safeguards 更严，有时会误拦正常、非安全类对话；拦到也不等于你违规。 官方出处： • 报错原文会链到 Usage Policy：<a href="https://www.anthropic.com/legal/aup">https://www.anthropic.com/legal/aup</a> （写明：碰到拦截本身≠违反 AUP） • 官方文档 Safeguard refusals：<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5</a> • Help Center（承认会有误杀）：<a href="https://support.claude.com/en/articles/8106465">https://support.claude.com/en/articles/8106465</a> • 同款误拦在 Anthropic 自家仓库也有人报，例如：[Bug] Opus 5.5 safeguards falsely flag non-cyber session (API Error) · Issue #108500 · anthropics/cl</li>
+<li>[2026-11-23] 您好，这个是 Anthropic 官方在 Claude Code／Opus 5.5 上加的实时安全分类器拦的。 官方自己也写了：能力更强所以 safeguards 更严，有时会误拦正常、非安全类对话；拦到也不等于你违规。 官方出处： • 报错原文会链到 Usage Policy：<a href="https://www.anthropic.com/legal/aup">https://www.anthropic.com/legal/aup</a> （写明：碰到拦截本身≠违反 AUP） • 官方文档 Safeguard refusals：<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5</a> • Help Center（承认会有误杀）：<a href="https://support.claude.com/en/articles/8106465">https://support.claude.com/en/articles/8106465</a> • 同款误拦在 Anthropic 自家仓库也有人报，例如：[Bug] Opus 5.5 safeguards falsely flag non-cyber session (API Error) · Issue #108500 · anthropics/cl</li>
+<h2>MCP/Connectors</h2>
+<li>[2026-11-26] MCP吗？</li>
+<li>[2026-11-25] 看您主要想在哪边用，对应处理一下就行： 如果只是想在 Claude Desktop 的普通 Chat 对话里用：直接新建一个对话，在工具/扩展开关里确认把 blender 打开，同时确保 Blender 里已经装好并开启了对应的插件服务。 如果是想在 Claude Code 里用：需要单独给 Claude Code 配一下 MCP。可以在终端执行： claude mcp add blender -s user -- uvx blender-mcp 或者在项目根目录建一个 .mcp.json 把它配进去，配完重新打开会话就能加载到了</li>
+<li>[2026-11-25] 您在 Customize -&gt; Connectors 里装的 blender 只是 Claude Desktop 桌面端普通对话用的本地扩展，而截图里提示没找到配置的是 Claude Code。这两边的 MCP 配置是分开的，不会自动互通</li>
+<li>[2026-11-25] 您是要装我们生图和生视频的mcp是么</li>
+<li>[2026-11-25] 把您需要连接的mcp链接发给codex让他帮您连就可以</li>
+<h2>风控/封号</h2>
+<li>[2026-11-25] 使用我们的API不存在被Claude官方封号风险的</li>
+<li>[2026-11-25] 我们有相互隔离的环境，不同的方案来做风控，测试封号</li>
+<li>[2026-11-25] 使用我的服务是不存在被官方封号的风险的哈</li>
+<li>[2026-11-24] Gemini现在渠道，因为风控严，加上货源很少，稳定性偶尔会差点，可以同时多打开几个渠道</li>
+<li>[2026-11-24] 您好，gemini现在渠道，因为风控严，加上货源很少，稳定性会差点，可以多打开几个渠道。碰到波动情况可以暂时先切到claude模型来使用，能力也是不差的</li>
+<h2>并发/429</h2>
+<li>[2026-11-26] 默认并发是10，只有这个有限制</li>
+<li>[2026-11-25] 客户私聊：3304295093@QQ.COM 发放6元体验金</li>
+<li>[2026-11-22] 配套的各项权益整体价值会更高： 1、专属服务对接群，相关问题专人优先对接处理，无需等候通用客服排队； 2、充值金额全额开具发票，开票相关成本由我方承担，做账报税更便利； 3、可配置分配更多调用密钥，并发承载规格更高，大批量业务同步调用时整体运行更加平稳； 综合这些服务、财税、配置上的优待，整体收益其实是很划算的</li>
+<li>[2026-11-20] 明白您的场景了，长文本分析和代码开发确实很耗Token。如果前期想先跑起来看看效果，可以先签6个月、按1万起充的档位试一下，不仅有5%的赠送额度，高并发和多密钥分配也能满足日常开发和跑大文档的需求</li>
+<li>[2026-11-20] 您好，企业定制套餐： 1，充值与折扣：起充1w，以此基础赠送5%额度 2，密钥与并发：支持更多密钥分配，提供更高并发。 3，合作周期：签署年度合作合同。 4，发票服务：发票成本由我方承担，如充值1w开1w的票</li>
+<h2>API地址</h2>
+<li>[2026-11-26] openai通用协议接口地址是<a href="https://api.aicodewith.ai/v1">https://api.aicodewith.ai/v1</a></li>
+<li>[2026-11-25] { &quot;id&quot;: 21861392, &quot;user_id&quot;: 1, &quot;created_at&quot;: 1795593937, &quot;type&quot;: 5, &quot;content&quot;: &quot;status_code=400, validating image item: image media type is required&quot;, &quot;username&quot;: &quot;guonei&quot;, &quot;token_name&quot;: &quot;导航站专用-刘洋舰&quot;, &quot;model_name&quot;: &quot;gemini-3.8-flash&quot;, &quot;quota&quot;: 0, &quot;prompt_tokens&quot;: 0, &quot;completion_tokens&quot;: 0, &quot;use_time&quot;: 0, &quot;is_stream&quot;: false, &quot;channel&quot;: 83, &quot;channel_name&quot;: &quot;春秋-gemini-低&quot;, &quot;upstream_quota&quot;: 0, &quot;token_id&quot;: 32612, &quot;group&quot;: &quot;www.yswg.love&quot;, &quot;ip&quot;: &quot;120.79.172.50&quot;, &quot;request_id&quot;: &quot;20261125080536795105458yTzSolk4&quot;, &quot;ext_user_id&quot;: &quot;&quot;, &quot;app_tag&quot;: &quot;&quot;, &quot;other&quot;: &quot;{\&quot;admin_info\&quot;:{\&quot;timing\&quot;:{\&quot;billing_ms\&quot;:24,\&quot;hdr_ms\&quot;:588,\&quot;recv_ms\&quot;:51,\&quot;total_ms\&quot;:665,\&quot;upstream_marked\&quot;:true},\&quot;upstream_error\&quot;:{\&quot;message\&quot;:\&quot;validating image item: image media type is required\&quot;,\&quot;type\&quot;:\&quot;upstream_error\&quot;,\&quot;param\&quot;:\&quot;\&quot;,\&quot;code\&quot;:\&quot;invalid_request_body\&quot;},\&quot;upstream_raw_body\&quot;:\&quot;{\\\&quot;error\\\&quot;:{\\\&quot;code\\\&quot;:\\\&quot;invalid_request_body\\\&quot;,\\\&quot;message\\\&quot;:\\\&quot;validating image item: image media type is required\\\&quot;},\\\&quot;request_id\\\&quot;:\\\&quot;req_1795593937165_21ca3423\\\&quot;}\&quot;,\&quot;use_channel\&quot;:[\&quot;83\&quot;]},\&quot;channel_id\&quot;:83,\&quot;channel_name\&quot;:\&quot;春秋-gemini-低\&quot;,\&quot;channel_type\&quot;:1,\&quot;error_code\&quot;:\&quot;invalid_request_body\&quot;,\&quot;error_type\&quot;:\&quot;openai_error\&quot;,\&quot;request_path\&quot;:\&quot;/v1/chat/completions\&quot;,\&quot;source\&quot;:\&quot;upstream\&quot;,\&quot;status_code\&quot;:400,\&quot;upstream_request_id\&quot;:\&quot;req_1795593937165_21ca3423\&quot;}&quot; }</li>
+<li>[2026-11-25] <a href="https://api.aicodewith.ai/v1">https://api.aicodewith.ai/v1</a>，少打了一个i</li>
+<li>[2026-11-25] 大家好，欢迎加入AICodeWith！ 我们是 AI 模型服务，Claude、GPT、Gemini、Grok、Nanobanana、Seedance生图生视频等国内主流模型，AI 模型国内直连服务，按 token 计费。 AICodeWith 官网地址(无需梯子)：<a href="https://aicodewith.ai/zh">https://aicodewith.ai/zh</a> AICodeWith Base URL(无需梯子)：<a href="https://api.aicodewith.ai">https://api.aicodewith.ai</a> 未订阅新用户可联系客服领取6元体验额度 使用遇到问题？ -可直接私信客服：AICodeWith｜客服豆豆 -也可通过首页「联系客服」添加客服微信 <a href="https://aicodewith.ai/zh/dashboard/usage-records">https://aicodewith.ai/zh/dashboard/usage-records</a> 工作时间【9:00~~21:00】 节假日值班时间【9:00~~17:00】 有任何疑问随时找客服，祝大家使用愉快</li>
+<li>[2026-11-25] ，您好，接口地址是<a href="https://api.acodewith.ai/v1">https://api.acodewith.ai/v1</a></li>
+<h2>套餐/返现</h2>
+<li>[2026-11-26] 您理解得没错，其实就是按量收费、用多少花多少。这边页面上写着“套餐”，其实只是提前设置好的不同充值金额档位，相当于充储值卡，并不是您说的那种包月、月底清零的话费套餐。买399或699，就是往您账户里充对应额度的余额，实际使用的时候按量扣费，没用完的余额会一直留在账户里，不会过期清零</li>
+<li>[2026-11-26] 是一样的，您可以直接把套餐理解成给API充值的充值包，就像充话费一样。买不同档位的套餐，其实就是往您的API账户里充不同金额的余额，并不是两套东西；充完后直接用这笔余额调用API，所有模型都能用，用多少扣多少</li>
+<li>[2026-11-26] 您好，套餐是不限制模型的，平台里的所有模型您都可以正常使用。不同套餐只是预充值的额度区别，API是按即用即付的方式计费，根据您的实际使用量扣费，用多少扣多少，额度用完后按需再充就行</li>
+<li>[2026-11-25] 您好，现在是消费返现，按你的实际消费金额累计：消费满 699 返 4%（27.96），满 1799 返 6%（107.94），这两档都能反复领。领了之后会把这一档的金额从已累计的消费里扣掉，剩下的继续累计，所以不用一次消耗完。 返现直接打到赠送余额，可以接着用来消费</li>
+<li>[2026-11-25] 个人使用不会过期的</li>
+<h2>发票</h2>
+<li>[2026-11-25] 您好，发票得稍等等</li>
+<li>[2026-11-25] 这两天发票提额，税务审批比较慢</li>
+<li>[2026-11-25] 我再催一把，正好在提额的时候开咱这个票，提额也很快其实，也就1、2天</li>
+<li>[2026-11-25] 换主体了嘛，换成惠州的了，养养惠州的额度，您也知道国内税务有限额然后就得养养，提额啥的就得走个流程</li>
+<li>[2026-11-25] 发票要这样嘛</li>
+<h2>对公信息</h2>
+<li>[2026-11-24] 账户名称：惠州市零柒科技有限公司 统一社会信用代码：91441322MAG1F9CK3M 账户号码：726381027658 开户银行：中国银行股份有限公司惠州博罗支行 公司注册地址：博罗县长宁镇祥岗罗2号河心七巷1号楼（现代公寓）1层12铺</li>
+<li>[2026-11-23] 对公转账收款信息： 账户名称：惠州市零柒科技有限公司 统一社会信用代码：91441322MAG1F9CK3M 账户号码：726381027658 开户银行：中国银行股份有限公司惠州博罗支行 公司注册地址：博罗县长宁镇祥岗罗2号河心七巷1号楼（现代公寓）1层12铺 开票成本按 5% 计（例如充值1000对公转账1050，开票按实际支付金额开） 打完把平台注册邮箱、开票信息和打款回执发出，这边安排充值和开票</li>
+<li>[2026-11-20] 对公转账收款信息： 账户名称：惠州市零柒科技有限公司 统一社会信用代码：91441322MAG1F9CK3M 账户号码：726381027658 开户银行：中国银行股份有限公司惠州博罗支行 公司注册地址：博罗县长宁镇祥岗罗2号河心七巷1号楼（现代公寓）1层12铺 开票成本按 5% 计（例如充值1000对公转账1050，开票按实际支付金额开） 打完把平台注册邮箱、开票信息和打款回执发我，这边安排充值和开票</li>
+<li>[2026-11-19] 辛苦您再给我个 甲方： 统一社会信用代码：</li>
+<li>[2026-11-19] 账户名称：天津川流文化有限公司 统一社会信用代码：91120104MADUK9R036 账户号码：12050180560100000316 开户银行：中国建设银行股份有限公司天津南洋支行 公司注册地址：天津市南开区宾水西道与凌宾路交汇处奥城商业广场18-1-2804</li>
+<h2>网络/VPN</h2>
+<li>[2026-11-25] 现在是正常的呀，网络波动吧，claude模型吗</li>
+<li>[2026-11-25] 正常如果登录chatgpt官方账号的话不开vpn都对话不了，肯定是开着vpn在使用的，所以切换完语言打开就是中文呢</li>
+<li>[2026-11-25] &quot;¥偏爱小宝宝¥： 就是说我需要有个VPN？&quot; ------</li>
+<li>[2026-11-25] 需要开启vpn，重启就会加载中文界面</li>
+<li>[2026-11-25] 切换中文界面需要vpn的</li>
+<h2>账号找回</h2>
+<li>[2026-11-25] 您试试用这个找回密码</li>
+<li>[2026-11-25] 您可以把可能的邮箱都给我，我这边后台看下是否有注册记录</li>
+<li>[2026-11-25] 您好，直接用旧帐号登陆就好，我们数据是互通的</li>
+<li>[2026-11-17] 您好没有查到注册记录，您还有之前充值的付款记录吗？</li>
+<h2>GPT-6.2</h2>
+<li>[2026-11-25] { &quot;id&quot;: 21861392, &quot;user_id&quot;: 1, &quot;created_at&quot;: 1795593937, &quot;type&quot;: 5, &quot;content&quot;: &quot;status_code=400, validating image item: image media type is required&quot;, &quot;username&quot;: &quot;guonei&quot;, &quot;token_name&quot;: &quot;导航站专用-刘洋舰&quot;, &quot;model_name&quot;: &quot;gemini-3.8-flash&quot;, &quot;quota&quot;: 0, &quot;prompt_tokens&quot;: 0, &quot;completion_tokens&quot;: 0, &quot;use_time&quot;: 0, &quot;is_stream&quot;: false, &quot;channel&quot;: 83, &quot;channel_name&quot;: &quot;春秋-gemini-低&quot;, &quot;upstream_quota&quot;: 0, &quot;token_id&quot;: 32612, &quot;group&quot;: &quot;www.yswg.love&quot;, &quot;ip&quot;: &quot;120.79.172.50&quot;, &quot;request_id&quot;: &quot;20261125080536795105458yTzSolk4&quot;, &quot;ext_user_id&quot;: &quot;&quot;, &quot;app_tag&quot;: &quot;&quot;, &quot;other&quot;: &quot;{\&quot;admin_info\&quot;:{\&quot;timing\&quot;:{\&quot;billing_ms\&quot;:24,\&quot;hdr_ms\&quot;:588,\&quot;recv_ms\&quot;:51,\&quot;total_ms\&quot;:665,\&quot;upstream_marked\&quot;:true},\&quot;upstream_error\&quot;:{\&quot;message\&quot;:\&quot;validating image item: image media type is required\&quot;,\&quot;type\&quot;:\&quot;upstream_error\&quot;,\&quot;param\&quot;:\&quot;\&quot;,\&quot;code\&quot;:\&quot;invalid_request_body\&quot;},\&quot;upstream_raw_body\&quot;:\&quot;{\\\&quot;error\\\&quot;:{\\\&quot;code\\\&quot;:\\\&quot;invalid_request_body\\\&quot;,\\\&quot;message\\\&quot;:\\\&quot;validating image item: image media type is required\\\&quot;},\\\&quot;request_id\\\&quot;:\\\&quot;req_1795593937165_21ca3423\\\&quot;}\&quot;,\&quot;use_channel\&quot;:[\&quot;83\&quot;]},\&quot;channel_id\&quot;:83,\&quot;channel_name\&quot;:\&quot;春秋-gemini-低\&quot;,\&quot;channel_type\&quot;:1,\&quot;error_code\&quot;:\&quot;invalid_request_body\&quot;,\&quot;error_type\&quot;:\&quot;openai_error\&quot;,\&quot;request_path\&quot;:\&quot;/v1/chat/completions\&quot;,\&quot;source\&quot;:\&quot;upstream\&quot;,\&quot;status_code\&quot;:400,\&quot;upstream_request_id\&quot;:\&quot;req_1795593937165_21ca3423\&quot;}&quot; }</li>
+<li>[2026-11-23] 您好，现在默认模型已经是6.2-sol了，您试试</li>
+<li>[2026-11-19] 你好，咨询一下问题。我是在 VSCode 里使用 API，我在咱们网站后台上已经勾选了 GPT-6.2 Astra GPT-6.2 Sol 但我现在还是看不到 ，应该怎么设置？</li>
+<li>[2026-11-19] 你可以换最新的6.2-sol试下</li>
+<li>[2026-11-19] - Codex CLI / Codex App：更新到最新版，在 /model 中选择 gpt-6.2-sol 或 gpt-6.2-astra。 - 其他客户端：在模型列表中添加对应模型 ID</li>
+<h2>特价渠道</h2>
+<li>[2026-11-24] 您可以关注下，上了会进行更新，gemini现在渠道，因为风控严，加上货源很少，目前该模型暂时没有1.9折</li>
+<li>[2026-11-24] 您好，日常使用基本是没有区别的，有时候会静默失败，发继续就可以，您感觉频繁的话，可以先关会特价，开剩下的另外这俩渠道</li>
+<li>[2026-11-22] 您好，可以在渠道管理单独只开启特价渠道</li>
+<li>[2026-11-18] 就是1.9折那个</li>
+<li>[2026-11-18] 咱们特价渠道主要来源就是kiro</li>
+<h2>体验金</h2>
+<li>[2026-11-26] ✅已为您发放 6 元体验额度，7 天内领取有效，您前往【任务奖励】页面即可领取使用。<a href="https://aicodewith.ai/zh/dashboard/rewards">https://aicodewith.ai/zh/dashboard/rewards</a></li>
+<li>[2026-11-26] 客户私聊： 体验额度怎么领取</li>
+<li>[2026-11-25] 您好，提供注册邮箱，可领取 ￥6 体验额度，在“任务奖励”里领取</li>
+<li>[2026-11-25] 客户私聊： xuziaknggg@gmail.com 发放6元体验金</li>
+<li>[2026-11-25] 大家好，欢迎加入AICodeWith！ 我们是 AI 模型服务，Claude、GPT、Gemini、Grok、Nanobanana、Seedance生图生视频等国内主流模型，AI 模型国内直连服务，按 token 计费。 AICodeWith 官网地址(无需梯子)：<a href="https://aicodewith.ai/zh">https://aicodewith.ai/zh</a> AICodeWith Base URL(无需梯子)：<a href="https://api.aicodewith.ai">https://api.aicodewith.ai</a> 未订阅新用户可联系客服领取6元体验额度 使用遇到问题？ -可直接私信客服：AICodeWith｜客服豆豆 -也可通过首页「联系客服」添加客服微信 <a href="https://aicodewith.ai/zh/dashboard/usage-records">https://aicodewith.ai/zh/dashboard/usage-records</a> 工作时间【9:00~~21:00】 节假日值班时间【9:00~~17:00】 有任何疑问随时找客服，祝大家使用愉快</li>
+<h2>客户端后端报错</h2>
+<li>[2026-11-14] 您好，看了下应该是您客户端的后端报错</li>
+<h2>Gemini</h2>
+<li>[2026-11-25] gemini是有问题的</li>
+<li>[2026-11-25] 还是gemini？</li>
+<li>[2026-11-25] { &quot;id&quot;: 21861392, &quot;user_id&quot;: 1, &quot;created_at&quot;: 1795593937, &quot;type&quot;: 5, &quot;content&quot;: &quot;status_code=400, validating image item: image media type is required&quot;, &quot;username&quot;: &quot;guonei&quot;, &quot;token_name&quot;: &quot;导航站专用-刘洋舰&quot;, &quot;model_name&quot;: &quot;gemini-3.8-flash&quot;, &quot;quota&quot;: 0, &quot;prompt_tokens&quot;: 0, &quot;completion_tokens&quot;: 0, &quot;use_time&quot;: 0, &quot;is_stream&quot;: false, &quot;channel&quot;: 83, &quot;channel_name&quot;: &quot;春秋-gemini-低&quot;, &quot;upstream_quota&quot;: 0, &quot;token_id&quot;: 32612, &quot;group&quot;: &quot;www.yswg.love&quot;, &quot;ip&quot;: &quot;120.79.172.50&quot;, &quot;request_id&quot;: &quot;20261125080536795105458yTzSolk4&quot;, &quot;ext_user_id&quot;: &quot;&quot;, &quot;app_tag&quot;: &quot;&quot;, &quot;other&quot;: &quot;{\&quot;admin_info\&quot;:{\&quot;timing\&quot;:{\&quot;billing_ms\&quot;:24,\&quot;hdr_ms\&quot;:588,\&quot;recv_ms\&quot;:51,\&quot;total_ms\&quot;:665,\&quot;upstream_marked\&quot;:true},\&quot;upstream_error\&quot;:{\&quot;message\&quot;:\&quot;validating image item: image media type is required\&quot;,\&quot;type\&quot;:\&quot;upstream_error\&quot;,\&quot;param\&quot;:\&quot;\&quot;,\&quot;code\&quot;:\&quot;invalid_request_body\&quot;},\&quot;upstream_raw_body\&quot;:\&quot;{\\\&quot;error\\\&quot;:{\\\&quot;code\\\&quot;:\\\&quot;invalid_request_body\\\&quot;,\\\&quot;message\\\&quot;:\\\&quot;validating image item: image media type is required\\\&quot;},\\\&quot;request_id\\\&quot;:\\\&quot;req_1795593937165_21ca3423\\\&quot;}\&quot;,\&quot;use_channel\&quot;:[\&quot;83\&quot;]},\&quot;channel_id\&quot;:83,\&quot;channel_name\&quot;:\&quot;春秋-gemini-低\&quot;,\&quot;channel_type\&quot;:1,\&quot;error_code\&quot;:\&quot;invalid_request_body\&quot;,\&quot;error_type\&quot;:\&quot;openai_error\&quot;,\&quot;request_path\&quot;:\&quot;/v1/chat/completions\&quot;,\&quot;source\&quot;:\&quot;upstream\&quot;,\&quot;status_code\&quot;:400,\&quot;upstream_request_id\&quot;:\&quot;req_1795593937165_21ca3423\&quot;}&quot; }</li>
+<li>[2026-11-25] 大家好，欢迎加入AICodeWith！ 我们是 AI 模型服务，Claude、GPT、Gemini、Grok、Nanobanana、Seedance生图生视频等国内主流模型，AI 模型国内直连服务，按 token 计费。 AICodeWith 官网地址(无需梯子)：<a href="https://aicodewith.ai/zh">https://aicodewith.ai/zh</a> AICodeWith Base URL(无需梯子)：<a href="https://api.aicodewith.ai">https://api.aicodewith.ai</a> 未订阅新用户可联系客服领取6元体验额度 使用遇到问题？ -可直接私信客服：AICodeWith｜客服豆豆 -也可通过首页「联系客服」添加客服微信 <a href="https://aicodewith.ai/zh/dashboard/usage-records">https://aicodewith.ai/zh/dashboard/usage-records</a> 工作时间【9:00~~21:00】 节假日值班时间【9:00~~17:00】 有任何疑问随时找客服，祝大家使用愉快</li>
+<li>[2026-11-25] gemini-3.1-pro-preview</li>
